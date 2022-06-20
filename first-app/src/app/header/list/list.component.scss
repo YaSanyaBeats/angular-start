@@ -1,0 +1,53 @@
+
+$accentColor: darkslateblue;
+
+app-list{
+    display: flex;
+    flex-direction: column;
+}
+
+.main{
+    &__list{
+        list-style: none;
+    }
+    &__list-elem{
+        margin: 10px 0;
+        padding: 10px;
+        border-radius: 10px;
+        transition: .3s;
+        cursor: pointer;
+        &:hover{
+            background-color: #99999950;
+        }
+    }
+    &__title{
+        margin-bottom: 30px;
+        text-align: center;
+    }
+    &__input{
+        border-radius: 10px;
+        padding: 10px 50px 10px 10px;
+        transition: .3s;
+        margin-bottom: 15px;
+        background-color: transparent;
+        border: 2px solid #99999950;
+        color: #99999950;
+        &:focus{
+            outline: none;
+            text-indent: 10px;
+        }
+    }
+    &__button{
+        background-color: $accentColor;
+        border-radius: 10px;
+        border: none;
+        color: white;
+        padding: 10px;
+        transition: .3s;
+        font-weight: bold;
+        &:hover{
+            background-color: darken($accentColor, 10%);
+            color: darken(white, 10%);
+        }
+    }
+}

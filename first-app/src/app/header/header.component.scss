@@ -1,0 +1,22 @@
+header{
+    width: 100%;
+    min-height: 100vh;
+    background: -webkit-linear-gradient(171deg, #121212,#181818);
+    background: linear-gradient(171deg, #121212,#181818);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+$accentColor: darkslateblue;
+
+.main{
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    &__money{
+        display: flex;
+        flex-direction: column;
+    }
+}
