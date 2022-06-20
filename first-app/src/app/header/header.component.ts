@@ -1,15 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 //import { Interface } from 'readline';
 
-enum Category {
+export enum NoteTypes {
 	Income = 1,
 	Expense
 }
 
-interface Note {
-	title: string;
-	price: number;
-	idCategory: Category;
+export class Note {
+	title: string = "Title";
+	price: number = 100;
+	noteType: NoteTypes = NoteTypes.Income;
+	category: string;
+
+	constructor(_title:string, _price:number, _noteType:NoteTypes, _category:string){
+		this.title = _title;
+		this.price = _price;
+		this.noteType = _noteType;
+		this.category = _category;
+	}
 }
 
 @Component({
@@ -18,41 +26,67 @@ interface Note {
 	styleUrls: ['./header.component.scss']
 })
 
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnChanges {
 
-	constructor() {
-		
+	@Input() category:string = '';
+
+	public notes: Array<Note>;
+
+	public income: NoteTypes = NoteTypes.Income;
+	public expense: NoteTypes = NoteTypes.Expense;
+	public currCategory: string = '';
+
+	addNote(newNote:Note) : void{
+		this.notes.push(newNote);
 	}
 
-	public notes: Array<Note> = [
-		{
-			title: "Зарплата",
-			price: 200,
-			idCategory: Category.Income
-		},
-		{
-			title: "Покушать",
-			price: 300,
-			idCategory: Category.Expense
-		},
-		{
-			title: "Подарили",
-			price: 2000,
-			idCategory: Category.Income
-		},
-		{
-			title: "Погулять",
-			price: 1000,
-			idCategory: Category.Expense
-		},
-		{
-			title: "Жёстко погулять",
-			price: 5000,
-			idCategory: Category.Expense
-		}
-	]
+	constructor() {
+		this.notes = [
+			{
+				title: "Зарплата",
+				price: 200,
+				noteType: NoteTypes.Income,
+				category: 'Здоровье'
+			},
+			{
+				title: "Покушать",
+				price: 300,
+				noteType: NoteTypes.Expense,
+				category: 'Здоровье'
+			},
+			{
+				title: "Подарили",
+				price: 2000,
+				noteType: NoteTypes.Income,
+				category: 'Здоровье'
+			},
+			{
+				title: "Погулять",
+				price: 1000,
+				noteType: NoteTypes.Expense,
+				category: 'Дорога'
+			},
+			{
+				title: "Жёстко погулять",
+				price: 5000,
+				noteType: NoteTypes.Expense,
+				category: 'Дорога'
+			}
+		]
+	}
 
 	ngOnInit(): void {
+	}
+
+	ngOnChanges(changes: SimpleChanges): void {
+		for (let propName in changes) {  
+			let change = changes[propName];
+			let curVal  = JSON.stringify(change.currentValue);
+			let prevVal = JSON.stringify(change.previousValue);
+			
+			this.currCategory = curVal;
+		}
+		this.notes = [...this.notes];
 	}
 
 }

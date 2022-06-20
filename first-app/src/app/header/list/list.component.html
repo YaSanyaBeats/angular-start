@@ -1,8 +1,13 @@
-<h2 class="main__title">Заголовок</h2>
+<h2 class="main__title">{{title}}</h2>
 <ul class="main__list">
-    <li class="main__list-elem">Зарплата <strong>200</strong> руб</li>
-    <li class="main__list-elem">Подарили <strong>2000</strong> руб</li>
+    <ng-container *ngFor="let note of notes">
+        <li class="main__list-elem" *ngIf="(note.noteType == noteType) && (note.category == category)">
+            {{note.title}} 
+            <strong>{{note.price}}</strong>
+             руб
+        </li>
+    </ng-container>
 </ul>
-<input class="main__input" type="text" #incomeInput placeholder="Введите название">
-<input class="main__input" type="text" #incomeInputPrice placeholder="Введите стоимость">
-<button class="main__button">Добавить</button>
+<input class="main__input" type="text" #titleInput placeholder="Введите название">
+<input class="main__input" type="text" #priceInput placeholder="Введите стоимость">
+<button class="main__button" (click)="addNewNote(titleInput.value, priceInput.value, noteType)">Добавить</button>

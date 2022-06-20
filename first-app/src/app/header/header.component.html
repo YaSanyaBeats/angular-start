@@ -1,6 +1,6 @@
 <header>
     <div class="wrapper main">
-        <app-list class="main__money income" [notes]="notes"></app-list>
-        <app-list class="main__money expenses" [notes]="notes"></app-list>
+        <app-list title="Доходы" [category]="currCategory" [noteType]="income" (newNote)="addNote($event)" class="main__money income" [notes]="notes"></app-list>
+        <app-list title="Расходы" [category]="currCategory"  [noteType]="expense" (newNote)="addNote($event)" class="main__money expenses" [notes]="notes"></app-list>
     </div>
 </header>

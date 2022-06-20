@@ -1,0 +1,31 @@
+.sidebar{
+    background-color: #121212;
+    height: 100vh;
+    border-right: 2px solid #99999950;
+    padding: 20px;
+    &__icon{
+        width: 100%;
+        text-align: right;
+    }
+    &__list{
+        list-style: none;
+    }
+    &__elem{
+        padding: 20px;
+        transition: .3s;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        margin-top: 20px;
+        &:hover{
+            background-color: #99999950;
+        }
+    }
+    &__circle{
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: red;
+        margin-right: 15px;
+    }
+}

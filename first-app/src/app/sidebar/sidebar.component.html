@@ -1,0 +1,11 @@
+<div class="sidebar">
+    <mat-icon class="sidebar__icon">reorder</mat-icon>
+    <ul class="sidebar__list">
+        <ng-container *ngFor="let category of categories">
+            <li class="sidebar__elem" (click)="setActive(category)" [ngStyle]="{backgroundColor: category.isActive ? '#99999950' : 'transparent'}">
+                <div class="sidebar__circle" [ngStyle]="{backgroundColor: category.color}"></div>
+                <span class="sidebar__text">{{category.title}}</span>
+            </li>
+        </ng-container>
+    </ul>
+</div>

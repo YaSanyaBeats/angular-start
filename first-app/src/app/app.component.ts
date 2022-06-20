@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
+  public category = '';
+  public changeHeader(str:string){
+    this.category = str;
+  }
+
   title = 'first-app';
 }
