@@ -80,11 +80,11 @@ export class HeaderComponent implements OnInit, OnChanges {
 
 	ngOnChanges(changes: SimpleChanges): void {
 		for (let propName in changes) {  
-			let change = changes[propName];
-			let curVal  = JSON.stringify(change.currentValue);
-			let prevVal = JSON.stringify(change.previousValue);
-			
-			this.currCategory = curVal;
+			if(propName == 'category'){
+				let change = changes[propName];
+				this.currCategory = change.currentValue;
+				
+			}
 		}
 		this.notes = [...this.notes];
 	}

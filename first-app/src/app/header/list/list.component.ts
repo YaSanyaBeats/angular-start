@@ -12,7 +12,7 @@ export class ListComponent implements OnInit, OnChanges {
   @Input() title: string = '';
   @Input() noteType: NoteTypes = NoteTypes.Income;
   @Input() notes: Array<Note> = [];
-  @Input() category: string = '';
+  @Input() category: string = 'Здоровье';
 
   @Output() newNote = new EventEmitter();
 
@@ -28,14 +28,14 @@ export class ListComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     for (let propName in changes) {  
-			let change = changes[propName];
-			let curVal  = JSON.stringify(change.currentValue);
-			let prevVal = JSON.stringify(change.previousValue);
+      if(propName == 'category'){
+        let change = changes[propName];
+        this.category = change.currentValue;
+        
+      }
 			
-      this.category = curVal;
-      break;
 		}
-    console.log(this.category);
+    
   }
 
 }
